@@ -6,9 +6,12 @@ import Header from './Header'
 import {formatISO9075} from 'date-fns'
 
 
+
+
 const ClickedPost = () => {
     const [postInfo, setPostInfo] = useState(null);
     const {id}= useParams()
+    
     useEffect(()=>{
         const fetchData = async() =>{
             const pageContent = await axios.get(`/post/${id}`)
@@ -40,7 +43,6 @@ if (!postInfo)
         <img className='w-full h-full pt-4 pb-4' src = {`/${postInfo.cover}`} alt='' />
         </div>
         <div>
-        
         </div>
        <div className='h-full pt-5 p-2 w-full' dangerouslySetInnerHTML={{__html:postInfo.content}}>
        </div>

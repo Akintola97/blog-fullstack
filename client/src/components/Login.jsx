@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom';
+import ClickedPost from './ClickedPost';
 import Header from './Header'
 
 const Login = () => {
@@ -21,10 +22,14 @@ const Login = () => {
        } else {  
          alert('wrong credentials')
        }
-  }
+  } 
   if (redirect){
    return <Navigate to = {'/'} />
    }
+
+ 
+
+
 
   return (
     <div>

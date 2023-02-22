@@ -8,6 +8,7 @@ import ClickedPost from './components/ClickedPost';
 
 
 
+
 function App() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
 <ClickedPost />
 }/>
 </Routes>
+
 </>
   );
 }
