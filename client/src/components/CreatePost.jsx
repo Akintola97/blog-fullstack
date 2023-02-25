@@ -2,7 +2,6 @@ import React from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from 'react';
- import axios from 'axios';
  import { Navigate } from 'react-router-dom';
 import Header from './Header';
 
@@ -40,13 +39,16 @@ const CreatePost = () => {
         data.set('content', content)
         data.set('file', files[0])
         e.preventDefault();
-        const post = await axios.post('/post', data, {withCredentials:true, credentials: 'include'})
-        if(post && post.status === 200 && post.statusText === 'OK'){
-           setRedirect(true);
+      const response = await fetch('/post', {
+          method: 'POST',
+          body: data,
+          credentials: 'include',
+        });
+        if (response.ok) {
+          setRedirect(true);
         }
-  
+      }
       
-    }
      if (redirect){
        return <Navigate to = {'/'} />
       }

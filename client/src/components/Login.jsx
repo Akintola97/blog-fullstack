@@ -1,33 +1,37 @@
-import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom';
-import ClickedPost from './ClickedPost';
+import { UserContext} from '../UserContext';
 import Header from './Header'
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
-  
+  const navigate = useNavigate();
+  const {setUserInfo} = useContext(UserContext);
 
 
   const handleSubmit= async(e)=> {
     e.preventDefault();
     
-      const login = await axios.post('/login', {username, password}, {credentials: 'include', withCredentials: true});
-       if (login.data){
-         setRedirect(true);
-       } else {  
-         alert('wrong credentials')
-       }
-  } 
-  if (redirect){
-   return <Navigate to = {'/'} />
-   }
+    const response = await fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify({username, password}),
+      headers: {'Content-Type':'application/json'},
+      credentials: 'include',
+    });
+       if (response.ok){
+       response.json().then((userInfo) =>{
+        setUserInfo(userInfo);
+        navigate('/');
+       });
+  } else {
+    alert('wrong credentials')
+  }
 
- 
+  }
 
 
 
@@ -37,7 +41,7 @@ const Login = () => {
     {<Header />}
    
     <div className='flex justify-center items-center text-center w-full h-full'>
-        <form action='' onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <h1 className='text-center font-bold text-[6vmin] p-3'>Login</h1>
             <div>
             <input className='border rounded-lg' type='text' placeholder='username' value={username} onChange={e => setUsername(e.target.value)} name='username' required />

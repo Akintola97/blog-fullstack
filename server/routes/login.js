@@ -12,7 +12,7 @@ const Post = require('../models/Post')
 
 
 login.post('/login', async (req, res)=>{
-    const {username, password} = req.body
+    const {username, password} = req.body;
     const userDoc = await userModel.findOne({username});
     const passOk = await bcrypt.compare(password, userDoc.password)
     if(passOk) //This should be a boolean saying true. It proves the encrypted in the database password is correct 

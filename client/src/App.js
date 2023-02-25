@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Post from './components/CreatePost';
 import ClickedPost from './components/ClickedPost';
+import {UserContextProvider} from './UserContext'
 
 
 
@@ -12,6 +13,7 @@ import ClickedPost from './components/ClickedPost';
 function App() {
   return (
     <>
+    <UserContextProvider>
 <Routes>
 <Route path = '/' element={
 <div>
@@ -33,7 +35,7 @@ function App() {
 <ClickedPost />
 }/>
 </Routes>
-
+</UserContextProvider>
 </>
   );
 }

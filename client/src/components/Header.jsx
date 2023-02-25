@@ -1,29 +1,34 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react';
+
+import React, { useContext, useEffect } from 'react'
+
 import { Link } from 'react-router-dom'
+import { UserContext } from '../UserContext';
 
 
 
 
 
 const Header = () => {
-  const [userInfo, setUserInfo] = useState(null);
+  const {setUserInfo, userInfo} = useContext(UserContext);
   useEffect(()=>{
-    const fetchData = async () =>{
-      const profile = await axios.get('/profile', {withCredentials: true, credentials: 'include'})
-      setUserInfo(profile.data.username)
-    }
-    fetchData()
-  }, [])
+      fetch('/profile', {
+        credentials:'include'
+      })
+      .then(response => {
+        response.json().then(userInfo => {
+          setUserInfo(userInfo);
+      });
+});
+}, []);
+      
 
 
   function logout(){
-    axios.post('/logout', {credentials:'include', withCredentials: true})
+    fetch('/logout', {credentials:'include', method:'POST'});
     setUserInfo(null)
   }
 
-
+  const username = userInfo?.username;
   return (
    <>
     <div className='flex justify-between items-center p-2'>
@@ -31,14 +36,14 @@ const Header = () => {
         <h1><Link to = '/' className='logo text-[5vmin]'>Blog</Link></h1> 
     </div>
      <div className='flex'>
-      {userInfo && (
+      {username && (
         <>
         <h1 className='text-[2.5vmin] pr-4 capitalize'>Hello, {userInfo}</h1>
         <h1 className='pr-4 text-[2.5vmin]'><Link to ='/post'>Create new post</Link></h1>
         <h1 className='text-[2.5vmin]'><button onClick={logout}>Logout</button></h1> 
         </>
       )}
-      {!userInfo && (
+      {!username && (
         <>
         <h1 className='pr-4 text-[2.5vmin]'><Link to = '/register' className='logo'>Register</Link></h1>
         <h1 className='text-[2.5vmin]'><Link to = '/login' className='logo'>Login</Link></h1>

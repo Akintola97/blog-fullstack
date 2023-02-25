@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Post = ({_id, author,title, summary, cover, content, createdAt}) => {
 
-  console.log(author.username)
+
 
   return (
     <>
