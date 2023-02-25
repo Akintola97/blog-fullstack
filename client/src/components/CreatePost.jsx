@@ -1,8 +1,7 @@
 import React from 'react'
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { useState } from 'react';
  import { Navigate } from 'react-router-dom';
+import Editor from '../Editor';
 
 
 const CreatePost = () => {
@@ -15,22 +14,7 @@ const CreatePost = () => {
 
 
 
-    const modules = {
-        toolbar: [
-          [{ 'header': [1, 2, false] }],
-          ['bold', 'italic', 'underline','strike', 'blockquote'],
-          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-          ['link', 'image'],
-          ['clean']
-        ],
-      };
 
-    const formats = [
-        'header',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image'
-      ];
 
     const createPost = async(e)=>{
         const data = new FormData();
@@ -65,7 +49,7 @@ const CreatePost = () => {
            <input className='border rounded w-full h-[5vmin]' onChange={e=>setSummary(e.target.value)} value={summary} type='summary' placeholder={'Summary'} maxLength='170' required />
            </div>
            <div className='pt-5 pb-3 pl-3 pr-3'>
-            <ReactQuill value={content} modules={modules} onChange={newValue=>setContent(newValue)} formats={formats} className='h-[30vmin]' required />
+            <Editor value={content} onChange={setContent} />
             </div>
             <div className='pt-10 pl-3'>
             <input type='file' onChange={e => setFiles(e.target.files)} required maxLength='2500'/>

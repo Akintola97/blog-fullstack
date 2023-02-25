@@ -8,6 +8,7 @@ import ClickedPost from './components/ClickedPost';
 import {UserContextProvider} from './UserContext'
 import Layout from './Layout'
 import Index from './components/Index'
+import Editpost from './components/Editpost';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 <Route path = {'/Register'} element={<Register />}/>
 <Route path = {'/create'} element={<CreatePost />}/>
 <Route path = {'/post/:id'} element={<ClickedPost />}/>
+<Route path = {'/edit/:id'} element={<Editpost />}/>
 </Route> 
 </Routes>
 </UserContextProvider>

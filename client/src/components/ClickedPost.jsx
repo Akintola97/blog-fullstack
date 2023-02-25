@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useContext } from 'react'
 import { useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Header from './Header'
 import {formatISO9075} from 'date-fns'
 import { UserContext } from '../UserContext'
@@ -42,7 +42,7 @@ if (!postInfo)
         </div>
         {userInfo.id === postInfo.author._id && (
           <div>
-            <button className='border bg-red-300 rounded-md p-1.5'><a href=''>Edit Post</a></button>
+            <button className='border bg-red-300 rounded-md p-1.5'><Link to = {`/edit/${postInfo._id}`}>Edit Post</Link></button>
           </div>
 
         )}
