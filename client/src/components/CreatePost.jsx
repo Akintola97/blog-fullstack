@@ -3,7 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from 'react';
  import { Navigate } from 'react-router-dom';
-import Header from './Header';
+
 
 const CreatePost = () => {
 
@@ -54,8 +54,7 @@ const CreatePost = () => {
       }
 
   return (
-    <div className='h-[100vh] w-[100vw]'>
-      {<Header />}
+  
         <form onSubmit={createPost}>
             <div className='pt-5 pb-3 pl-3 pr-3'>
             <input className='border rounded w-full h-[5vmin]' value={title} type='title' placeholder={'Title'} 
@@ -77,7 +76,7 @@ const CreatePost = () => {
             
             
         </form>
-    </div>
+
   )
 }
 

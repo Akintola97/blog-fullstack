@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './Header'
 import axios from 'axios'
 import { useState } from 'react';
 
@@ -29,9 +28,6 @@ const Register = () => {
 
   return (
     <div>
-    <div className='w-[100vw] h-[90vh]'>
-    {<Header />}
-   
     <div className='flex justify-center items-center text-center w-full h-full'>
         <form action='' onSubmit={handleSubmit}>
             <h1 className='text-center font-bold text-[6vmin] p-3'>Register</h1>
@@ -47,7 +43,7 @@ const Register = () => {
         </form>
     </div>
     </div>
-    </div>
+    
   )
 }
 

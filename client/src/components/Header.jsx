@@ -9,7 +9,7 @@ import { UserContext } from '../UserContext';
 
 
 const Header = () => {
-  const {setUserInfo, userInfo} = useContext(UserContext);
+  const {userInfo, setUserInfo} = useContext(UserContext);
   useEffect(()=>{
       fetch('/profile', {
         credentials:'include'
@@ -29,6 +29,7 @@ const Header = () => {
   }
 
   const username = userInfo?.username;
+
   return (
    <>
     <div className='flex justify-between items-center p-2'>
@@ -38,8 +39,8 @@ const Header = () => {
      <div className='flex'>
       {username && (
         <>
-        <h1 className='text-[2.5vmin] pr-4 capitalize'>Hello, {userInfo}</h1>
-        <h1 className='pr-4 text-[2.5vmin]'><Link to ='/post'>Create new post</Link></h1>
+        <h1 className='text-[2.5vmin] pr-4 capitalize'>Hello, {username}</h1>
+        <h1 className='pr-4 text-[2.5vmin]'><Link to ='/create'>Create new post</Link></h1>
         <h1 className='text-[2.5vmin]'><button onClick={logout}>Logout</button></h1> 
         </>
       )}
