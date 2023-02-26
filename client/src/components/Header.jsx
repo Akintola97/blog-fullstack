@@ -1,8 +1,11 @@
 
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { UserContext } from '../UserContext';
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 
@@ -10,6 +13,9 @@ import { UserContext } from '../UserContext';
 
 const Header = () => {
   const {userInfo, setUserInfo} = useContext(UserContext);
+  const navigate = useNavigate();
+
+
   useEffect(()=>{
       fetch('/profile', {
         credentials:'include'
@@ -17,16 +23,24 @@ const Header = () => {
       .then(response => {
         response.json().then(userInfo => {
           setUserInfo(userInfo);
+         
       });
+     
 });
 }, []);
       
 
-
   function logout(){
-    fetch('/logout', {credentials:'include', method:'POST'});
-    setUserInfo(null)
+    
+  fetch('/logout', {credentials:'include', method:'POST'})
+        setUserInfo(null)
+        
+console.log(setUserInfo)
   }
+
+ 
+
+
 
   const username = userInfo?.username;
 

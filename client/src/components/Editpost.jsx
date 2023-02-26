@@ -68,7 +68,7 @@ useEffect(() => {
     <input type='file' onChange={e => setFiles(e.target.files)} required maxLength='2500'/>
     </div>
     <div className='text-center p-10'>
-        <button type='submit' className='bg-green-500 border rounded-lg p-3'>Edit Post</button>
+        <button type='submit' className='bg-green-500 border rounded-lg p-3'>Update</button>
     </div>
 </form>
 

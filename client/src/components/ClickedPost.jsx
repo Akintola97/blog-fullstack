@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useContext } from 'react'
 import { useEffect, useState} from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Header from './Header'
+
 import {formatISO9075} from 'date-fns'
 import { UserContext } from '../UserContext'
 
@@ -17,7 +17,7 @@ const ClickedPost = () => {
     useEffect(()=>{
         const fetchData = async() =>{
             const pageContent = await axios.get(`/post/${id}`)
-            setPostInfo(pageContent.data)
+            setPostInfo(pageContent?.data)
         }
       fetchData()
     }, [id])
@@ -40,7 +40,7 @@ if (!postInfo)
         <div>
         <time className='text-[2.3vmin] text-left'>{formatISO9075(new Date(postInfo.createdAt))}</time>
         </div>
-        {userInfo.id === postInfo.author._id && (
+        {userInfo?.id === postInfo?.author._id && (
           <div>
             <button className='border bg-red-300 rounded-md p-1.5'><Link to = {`/edit/${postInfo._id}`}>Edit Post</Link></button>
           </div>
