@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState} from 'react'
+import React, { useContext, useEffect} from 'react'
 
 import { Link} from 'react-router-dom'
 import { UserContext } from '../UserContext';
@@ -35,7 +35,10 @@ const Header = () => {
   fetch('/logout', {credentials:'include', method:'POST'})
         setUserInfo(null)
         
-console.log(setUserInfo)
+         if (setUserInfo){
+          navigate('/');
+          }
+        
   }
 
  
