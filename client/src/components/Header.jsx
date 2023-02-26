@@ -49,7 +49,7 @@ const Header = () => {
 
   return (
    <>
-    <div className='flex justify-between items-center p-2'>
+    <div className='w-full h-full flex justify-between items-center p-2 linear-gradient(rgb(17, 24, 39), rgb(75, 85, 99))'>
      <div>
         <h1><Link to = '/' className='logo text-[5vmin]'>Blog</Link></h1> 
     </div>

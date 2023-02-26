@@ -50,6 +50,21 @@ useEffect(() => {
        }
 
 
+       const deletePost = async(e) =>{
+        e.preventDefault();
+        const response = await fetch('/delete', {credentials:'include', method:'DELETE',
+      })
+      console.log(response)
+      if (response.ok){
+        alert('Post has been delete')
+        setRedirect(true)
+      }
+      if (redirect){
+        return <Navigate to = {'/'} />
+        }
+ 
+      }
+
   return (
        
         <form onSubmit={UpdatePost}>
@@ -69,6 +84,7 @@ useEffect(() => {
     </div>
     <div className='text-center p-10'>
         <button type='submit' className='bg-green-500 border rounded-lg p-3'>Update</button>
+        <button onClick={deletePost} type='submit' className='bg-green-500 border rounded-lg p-3'>delete</button>
     </div>
 </form>
 

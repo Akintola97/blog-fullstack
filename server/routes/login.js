@@ -117,4 +117,15 @@ login.put('/post',upload.single('file'), async (req,res) => {
     });
 });
 
+login.delete('/delete', async (req, res)=>{
+  const {id} = req.params;
+  await Post.deleteOne({id});
+  res.json('Deleted');
+})
+
+
+
+
+
+
 module.exports = login;
