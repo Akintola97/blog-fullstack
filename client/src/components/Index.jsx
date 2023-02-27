@@ -17,14 +17,14 @@ const Index = () => {
   }, [])
 
   return (
-    <>
+    <div className='w-full  min-h-screen bg-gradient-to-t from-black via-black to-black text-white '>
        {posts.length > 0 && posts.map((post, index) =>{
           return <Post {...post} key={index}/>
        })} 
       
     
     
-    </>
+    </div>
   )
 }
 

@@ -23,8 +23,8 @@ const Editor = ({value, onChange}) => {
 
       
   return (
-    <div>
-        <ReactQuill value={value} modules={modules} onChange={onChange} formats={formats} className='h-[30vmin]' required />
+    <div className='h-full w-full'>
+        <ReactQuill value={value} modules={modules} onChange={onChange} formats={formats} className='h-[40vmin]' required />
     </div>
   )
 }

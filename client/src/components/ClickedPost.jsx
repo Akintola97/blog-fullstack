@@ -30,15 +30,15 @@ if (!postInfo)
 
   return (
     <>
-    <div className='w-full h-full p-5'>
+    <div className='w-full min-h-screen p-5 bg-black text-white'>
         <div>
-        <h1 className='text-[5vmin] capitalize font-bold text-center p-5'>{postInfo.title}</h1>
+        <h1 className='text-[5vmin] capitalize font-bold text-center pt-5'>{postInfo.title}</h1>
         </div>
         <div>
-        <h1 className='text-[2.3vmin] capitalize text-left'>Author: {postInfo.author.username}</h1>
+        <h1 className='text-[2.3vmin] capitalize text-center'>Author: {postInfo.author.username}</h1>
         </div>
-        <div>
-        <time className='text-[2.3vmin] text-left'>{formatISO9075(new Date(postInfo.createdAt))}</time>
+        <div className='text-center'>
+        <time className='text-[2.3vmin]'>{formatISO9075(new Date(postInfo.createdAt))}</time>
         </div>
         {userInfo?.id === postInfo?.author._id && (
           <div>
@@ -51,7 +51,7 @@ if (!postInfo)
         </div>
         <div>
         </div>
-       <div className='h-full pt-5 p-2 w-full' dangerouslySetInnerHTML={{__html:postInfo.content}}>
+       <div className='h-full pt-5 p-2 w-full text-white' dangerouslySetInnerHTML={{__html:postInfo.content}}>
        </div>
     </div>
     </>

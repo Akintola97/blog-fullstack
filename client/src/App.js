@@ -2,7 +2,6 @@
 import {Routes, Route} from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
-import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 import ClickedPost from './components/ClickedPost';
 import {UserContextProvider} from './UserContext'

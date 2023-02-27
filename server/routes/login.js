@@ -12,6 +12,7 @@ const Post = require('../models/Post');
 
 
 
+
 login.post('/login', async (req, res)=>{
     const {username, password} = req.body;
     const userDoc = await userModel.findOne({username});
@@ -106,7 +107,7 @@ login.put('/post',upload.single('file'), async (req,res) => {
       if (!isAuthor) {
         return res.status(400).json('you are not the author');
       }
-      await postDoc.update({
+      await postDoc.updateOne({
         title,
         summary,
         content,
@@ -117,10 +118,11 @@ login.put('/post',upload.single('file'), async (req,res) => {
     });
 });
 
-login.delete('/delete', async (req, res)=>{
-  const {id} = req.params;
-  await Post.deleteOne({id});
+login.delete('/post/:id', async (req, res)=>{
+  const {id} = req.body;
+  await Post.findByIdAndDelete(id);
   res.json('Deleted');
+  console.log(id)
 })
 
 

@@ -52,8 +52,8 @@ useEffect(() => {
 
        const deletePost = async(e) =>{
         e.preventDefault();
-        const response = await fetch('/delete', {credentials:'include', method:'DELETE',
-      })
+        const response = await fetch('/post/'+id, {credentials:'include', method:'DELETE',
+      }) 
       console.log(response)
       if (response.ok){
         alert('Post has been delete')

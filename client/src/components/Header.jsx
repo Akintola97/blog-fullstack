@@ -47,11 +47,13 @@ const Header = () => {
 
   const username = userInfo?.username;
 
+
+  // 
   return (
    <>
-    <div className='w-full h-full flex justify-between items-center p-2 linear-gradient(rgb(17, 24, 39), rgb(75, 85, 99))'>
+    <div className='w-full h-full sticky top-0 flex justify-between items-center p-2 bg-gradient-to-l from-gray-700 via-gray-900 to-black text-white'>
      <div>
-        <h1><Link to = '/' className='logo text-[5vmin]'>Blog</Link></h1> 
+        <h1><Link to = '/' className='logo text-[5vmin] font-cursive'>Blog</Link></h1> 
     </div>
      <div className='flex'>
       {username && (
