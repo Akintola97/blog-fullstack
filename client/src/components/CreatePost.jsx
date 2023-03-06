@@ -38,7 +38,7 @@ const CreatePost = () => {
       }
 
   return (
-  <div className='w-full min-h-screen text-white bg-black p-10'>
+  <div className='w-full min-h-screen text-black  p-10 '>
         <form className='' onSubmit={createPost}>
             <div className='pt-5 pb-3 pl-3 pr-3'>
             <input className='border rounded w-full h-[5vmin]' value={title} type='title' placeholder={'Title'} 

@@ -119,7 +119,7 @@ login.put('/post',upload.single('file'), async (req,res) => {
 });
 
 login.delete('/post/:id', async (req, res)=>{
-  const {id} = req.body;
+  const id = req.params.id;
   await Post.findByIdAndDelete(id);
   res.json('Deleted');
   console.log(id)
