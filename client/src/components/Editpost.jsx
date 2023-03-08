@@ -11,6 +11,7 @@ const Editpost = () => {
     const [content,setContent] = useState('');
     const [files, setFiles] = useState('');
     const [redirect,setRedirect] = useState(false);
+    const [deleteRouteHome, setDeleteRouteHome] = useState(false);
 
 useEffect(() => {
     fetch('/post/'+id)
@@ -54,39 +55,47 @@ useEffect(() => {
         e.preventDefault();
         const response = await fetch('/post/'+id, {credentials:'include', method:'DELETE',
       }) 
-      console.log(response)
+      
       if (response.ok){
-        alert('Post has been delete')
-        setRedirect(true)
+        alert('Post has been deleted')
+        setDeleteRouteHome(true)
       }
-      if (redirect){
+      }
+      if (deleteRouteHome){
         return <Navigate to = {'/'} />
         }
- 
-      }
 
   return (
-       
-        <form onSubmit={UpdatePost}>
-    <div className='pt-5 pb-3 pl-3 pr-3'>
-    <input className='border rounded w-full h-[5vmin]' value={title} type='title' placeholder={'Title'} 
-    onChange={e => setTitle(e.target.value)} maxLength='120' required
-    />
+       <>
+        <div className='w-full h-full text-black flex items-center justify-center p-5'>
+      <form onSubmit={UpdatePost}>
+      <div className='text-center p-3'>
+      <input className='border rounded w-full' value={title} type='title' placeholder={'Title'} 
+            onChange={e => setTitle(e.target.value)} maxLength='120' required
+            />
     </div>
-   <div className='pt-5 pb-3 pl-3 pr-3'>
-   <input className='border rounded w-full h-[5vmin]' onChange={e=>setSummary(e.target.value)} value={summary} type='summary' placeholder={'Summary'} maxLength='170' required />
-   </div>
-   <div className='pt-5 pb-3 pl-3 pr-3'>
-    <Editor onChange={setContent} value= {content} />
-    </div> 
-    <div className='pt-10 pl-3'>
-    <input type='file' onChange={e => setFiles(e.target.files)} required maxLength='2500'/>
+    <div className='text-center p-3'>
+            <input className='border rounded w-full' value={summary} type='title' placeholder={'Summary'} maxLength='170'
+            onChange={e => setSummary(e.target.value)} required
+            />
+          </div>
+          <div className='p-3'>
+        <Editor value={content} onChange={setContent} maxLength='2500' />
+        </div>
+        </form>
+        </div>
+    <div className='w-full h-full flex flex-col justify-center pb-10'></div>
+        <form>
+    <div className='text-center'>
+    <input type='file' onChange={e => setFiles(e.target.files)} required />
     </div>
-    <div className='text-center p-10'>
+    <div className='text-center pb-10'>
         <button type='submit' className='bg-green-500 border rounded-lg p-3'>Update</button>
         <button onClick={deletePost} type='submit' className='bg-green-500 border rounded-lg p-3'>delete</button>
     </div>
 </form>
+       </>
+  
 
   )
 }

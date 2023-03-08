@@ -3,7 +3,8 @@ const login = express.Router();
 const bcrypt = require('bcrypt');
 const userModel = require('../models/Registration')
 const jwt = require('jsonwebtoken');
-const secret = 'asdfjklasdf'
+require('dotenv').config()
+const secret = process.env.secret_key
 const cookieParser = require('cookie-parser');
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
@@ -24,8 +25,6 @@ login.post('/login', async (req, res)=>{
             jwt.sign ({username, id:userDoc._id}, secret,  {}, (err, token)=>{
 
                 if (err) throw err;
-             //   res.json(token) // This creates 'tokens' in the console's headers
-              //  console.log(token)
               res.cookie('token', token).json(
                 {id:userDoc._id,
                 username,
@@ -122,7 +121,6 @@ login.delete('/post/:id', async (req, res)=>{
   const id = req.params.id;
   await Post.findByIdAndDelete(id);
   res.json('Deleted');
-  console.log(id)
 })
 
 

@@ -47,7 +47,7 @@ if (!postInfo)
 
         )}
         <div className='w-full h-full'>
-        <img className='w-full h-full pt-4 pb-4' src = {`/${postInfo.cover}`} alt='' />
+        <img className='w-full h-full p-12' src = {`/${postInfo.cover}`} alt='' />
         </div>
         <div>
         </div>

@@ -9,11 +9,10 @@ const Register = () => {
 
   const handleSubmit= async(e)=>{
     e.preventDefault();
-    console.log(username, password)
+  
     try {
       const fetchData = await axios.post('/register',{username, password});
-      console.log(fetchData.data)
-      console.log(fetchData.status)
+     
       if (fetchData.code === 500){
         alert('Please try other credentials')
       }else if(fetchData.status === 200){
