@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const host = 'localhost'
-const port = 5000;
 const dotenv = require('dotenv')
+const port = process.env.PORT || 5000;
 const mongoose = require('mongoose')
 const register_router = require('./routes/register')
 const login_router = require('./routes/login')
