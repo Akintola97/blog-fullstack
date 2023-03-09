@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static('uploads'))
 
 mongoose.set('strictQuery', false)
-mongoose.connect('mongodb+srv://blog:Myfullstackblog14@cluster0.hdjwdib.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(process.env.mongoose_connect)
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
